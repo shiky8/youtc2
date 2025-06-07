@@ -12,7 +12,7 @@ This tool is intended **strictly for educational or authorized security testing 
 
 ## 🧩 How It Works
 
-- The main script (`testin.py`) uses **YouTube playlists** and **video comments** as a covert channel.
+- The main script (`youtc2.py`) uses **YouTube playlists** and **video comments** as a covert channel.
 - It listens for **commands posted as comments** on videos (e.g., `shikyrun id`).
 - When a command is detected, it **reverses** (executes) the command on the target system and captures the output.
 - The output of the payload is **encoded** (e.g., base64-encoded) and posted back as a **reply comment** to the same video.
@@ -61,15 +61,24 @@ Alternatively, manually install:
 pip install google-auth google-auth-oauthlib google-api-python-client
 ```
 ### 3️⃣ Get Your OAuth Token 
-Before running `testin.py`, generate the `token.json` file with the provided helper script: 
+Before running `youtc2.py`, generate the `token.json` file with the provided helper script: 
 ```bash
 python3 youtc2_get_token.py
 ```
 * Follow the prompts to log in and authorize the app.
 * This will create a `token.json` file with your OAuth credentials.
+* Open your token.json file and copy its full JSON content.
+* Replace the `token_json_string` in the `youtc2.py` script with your copied JSON, like:
+  ```python
+  token_json_string = '{"token": "...", "refresh_token": "...", ...}'
+  ```
+* Replace the `VIDEO_ID` in the `youtc2.py` script with actual video ID like `jroZgDkqLCM`
+* Replace the `myauthorname` in the `youtc2.py` script with your toutube username like `@shiky8`
+* You  can replace your own Music Genre Playlists in `data` var or genrat it by  making a music_gnera.txt file that has the music genra name and then run this script `generate.py`
+  
 ### 5️⃣ Run the Tool 
 ```bash 
-python3 testin.py
+python3 youtc2.py
 ```
 ### 6️⃣ Using the Tool
 * Log in to your Google account when prompted (OAuth flow).
